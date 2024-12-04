@@ -9,7 +9,7 @@ public class Fil extends Thread{
         for(int i = 1; i < 10; i++){
             System.out.println(name + " " + i);
             try {
-                Thread.sleep(100);
+                Thread.sleep(10);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
