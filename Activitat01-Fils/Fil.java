@@ -6,6 +6,11 @@ public class Fil extends Thread{
 
     @Override
     public void run() {
+        try {
+            Thread.sleep(100000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         for(int i = 1; i < 10; i++){
             System.out.println(name + " " + i);
         }
