@@ -3,7 +3,7 @@
   
 
 ### Exercici 1  Equitativament
-En aquest exercici s'han de mostrar equitativament.
+En aquest exercici s'han de mostrar equitativament els resultats.
 ```java
 public class Principal{
 	public static void main(String[] args){
