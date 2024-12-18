@@ -1,7 +1,5 @@
 ## ACTIVITAT01 FILS
 
-  
-
 ### Exercici 1  Equitativament
 En aquest exercici s'han de mostrar equitativament.
 ```java
