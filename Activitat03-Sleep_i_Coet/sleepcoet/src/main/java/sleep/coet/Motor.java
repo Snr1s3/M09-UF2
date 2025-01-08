@@ -9,7 +9,7 @@ public class Motor extends Thread {
     public void run(){
         System.out.println(getString());
     }
-    public String getString(int interactions) {
-        return getName()+ "Incre. Objectiu: "+ objective + "Actual: "+actual;
+    public String getString() {
+        return getName()+ " Incre. Objectiu: "+ objective + " Actual: "+actual;
     }
 }
