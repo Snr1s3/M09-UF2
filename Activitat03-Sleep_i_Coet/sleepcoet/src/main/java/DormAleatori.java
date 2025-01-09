@@ -1,4 +1,4 @@
-package sleep.coet;
+
 public class DormAleatori extends Thread{
     private long time;
     private long newT;
@@ -14,7 +14,7 @@ public class DormAleatori extends Thread{
     public void run(){
         try {
             for(int i = 0; i<10; i++){
-                sleepT = (long) (Math.random() * 500) + 1000;
+                sleepT = (long) (Math.random()) + 2000;
                 System.out.println(getString(i));
                 Thread.sleep(sleepT);
                 newT = System.currentTimeMillis() - time;
