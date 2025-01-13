@@ -17,7 +17,7 @@ public class Motor extends Thread {
                 }
                 System.out.println(getString());
                 try{
-                    Thread.sleep((long) (Math.random()) + 2000);
+                    Thread.sleep((long) (Math.random() *2000));
                 }
                 catch(InterruptedException e) {
                     e.printStackTrace();

@@ -14,6 +14,9 @@ public class Coet {
         }
         while(velocitatObjectiu >= 0){
             velocitatObjectiu = isInt();
+            while(!passaApotencia(velocitatObjectiu)){
+                velocitatObjectiu = isInt();
+            }
             System.out.println("Passant a potència: "+ velocitatObjectiu);
             for (int i = 0; i < numPropulsors; i++) {
                 motors[i].setPotencia(velocitatObjectiu);
@@ -21,6 +24,15 @@ public class Coet {
             if(velocitatObjectiu == 0){
                 break;
             }
+        }
+    }
+    public static boolean passaApotencia(int p){
+        if(p >=0 && 10 >= p){
+            return true;
+        }
+        else{
+            System.out.println("Nombre invàlid!!");
+            return false;
         }
     }
 
