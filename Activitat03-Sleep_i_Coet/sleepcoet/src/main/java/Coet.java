@@ -12,7 +12,7 @@ public class Coet {
         for(int i = 0; i< numPropulsors; i++){
             motors[i] = new Motor("Motor "+i);
         }
-        while(velocitatObjectiu >= 0){
+        while(velocitatObjectiu > 0){
             velocitatObjectiu = isInt();
             while(!passaApotencia(velocitatObjectiu)){
                 velocitatObjectiu = isInt();
