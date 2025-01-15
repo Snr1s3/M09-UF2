@@ -17,12 +17,11 @@ public class Coet {
             while(!passaApotencia(velocitatObjectiu)){
                 velocitatObjectiu = isInt();
             }
-            System.out.println("Passant a potència: "+ velocitatObjectiu);
-            for (int i = 0; i < numPropulsors; i++) {
-                motors[i].setPotencia(velocitatObjectiu);
-            }
-            if(velocitatObjectiu == 0){
-                break;
+            if(velocitatObjectiu != 0){ 
+                System.out.println("Passant a potència: "+ velocitatObjectiu);
+                for (int i = 0; i < numPropulsors; i++) {
+                    motors[i].setPotencia(velocitatObjectiu);
+                }
             }
         }
     }
