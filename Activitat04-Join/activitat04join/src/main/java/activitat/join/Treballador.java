@@ -6,7 +6,6 @@ public class Treballador extends Thread {
     private float sou_anual_brut;
     private int edat_inici_treball;
     private int edat_fi_treball;
-    private String nom;
     private int edat_actual;
     private float cobrat;
     private Random rnd;
@@ -26,8 +25,10 @@ public class Treballador extends Thread {
         while (edat_actual < edat_fi_treball) {
             try {
                 Thread.sleep(rnd.nextInt(200));
-                cobra();
-                pagaImpostos();
+                if(edat_actual >= edat_inici_treball){
+                    cobra();
+                    pagaImpostos();
+                }
                 edat_actual++;
             } catch (InterruptedException e) {
                 e.printStackTrace();
