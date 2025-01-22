@@ -8,7 +8,7 @@ public class Administracio {
     public Administracio() {
         poblacio_activa = new Treballador[num_poblacio_activa];
         for (int i = 0; i < num_poblacio_activa; i++) {
-            poblacio_activa[i] = new Treballador(25000, 20, 65, "Ciutadà " + i);
+            poblacio_activa[i] = new Treballador(25000.0f, 20, 65, "Ciutadà " + i);
         }
     }
 
