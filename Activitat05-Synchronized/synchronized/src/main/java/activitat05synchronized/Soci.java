@@ -5,7 +5,7 @@ import java.util.Random;
 public class Soci extends Thread{
     private Compte compte;
     private float aportacio;
-    private long esperaMax;
+    private int esperaMax;
     private int maxAnys;
     private Random rnd;
 
@@ -22,15 +22,19 @@ public class Soci extends Thread{
         for(int i = 1; i<=maxAnys; i++) {
             for(int k = 1; k<=12; k++) {
                 try {
-                    Thread.sleep(rnd.nextInt(200));
-                    
+                    Thread.sleep(rnd.nextInt(esperaMax));
+                    if(k%2==0){
+                        compte.setSaldo(compte.getSaldo()+aportacio);
+                    }
+                    else{
+                        compte.setSaldo(compte.getSaldo()-aportacio);
+                    }
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }
         }
     }
-
 
     public Compte getCompte(){
         return compte;
