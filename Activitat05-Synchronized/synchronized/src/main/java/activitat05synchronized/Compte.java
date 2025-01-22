@@ -10,26 +10,23 @@ public class Compte {
         }
         return compte;
     } 
-
-    public static Compte crearCompte(float saldo){
-        if(compte == null){
-            compte = new Compte(saldo);
+    public synchronized void transaccio(int k, float aportacio){
+        if(k%2==0){
+            compte.setSaldo(compte.getSaldo()+aportacio);
         }
-        return compte;
-    } 
-
+        else{
+            compte.setSaldo(compte.getSaldo()-aportacio);
+        }
+    }
     private Compte(){
         setSaldo(0);
     }
-    private Compte(float saldo){
-        setSaldo(saldo);
-    }
 
-    public void setSaldo(float saldo){
+    public synchronized  void setSaldo(float saldo){
         this.saldo = saldo;
     }
 
-    public float getSaldo(){
+    public synchronized  float getSaldo(){
         return saldo;
     }
 }

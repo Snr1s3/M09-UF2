@@ -9,7 +9,7 @@ public class Associacio {
     public Associacio(Compte compte){
         numSocis= 1000;
         Socis = new Soci[numSocis];
-        for(int i = 0; i < 1000; i++){
+        for(int i = 0; i < numSocis; i++){
             Socis[i] = new Soci(compte);
         }
     }
@@ -32,6 +32,9 @@ public class Associacio {
     private void mostraBalancComptes(){
         Random rand = new Random();
         System.out.println("Saldo: " + Socis[rand.nextInt(1000)].getCompte().getSaldo());
+        /*for(Soci i: Socis){
+            System.out.println("Saldo: " + i.getCompte().getSaldo());
+        }*/
     }
     public static void main(String[] Bondia){
         Compte compte = Compte.crearCompte();

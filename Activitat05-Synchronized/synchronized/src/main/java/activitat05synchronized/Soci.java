@@ -20,15 +20,10 @@ public class Soci extends Thread{
     @Override
     public void run() {
         for(int i = 1; i<=maxAnys; i++) {
-            for(int k = 1; k<=12; k++) {
+            for(int k = 0; k<12; k++) {
+                compte.transaccio(k, aportacio);
                 try {
                     Thread.sleep(rnd.nextInt(esperaMax));
-                    if(k%2==0){
-                        compte.setSaldo(compte.getSaldo()+aportacio);
-                    }
-                    else{
-                        compte.setSaldo(compte.getSaldo()-aportacio);
-                    }
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
