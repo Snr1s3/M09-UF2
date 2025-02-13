@@ -44,16 +44,18 @@ public class Filosofs extends Thread {
         this.fEsquerra = fEsquerra;
     }
 
+    private void sleeping(int sleepTime) throws InterruptedException {
+        Thread.sleep(sleepTime);
+        Thread.sleep(rnd.nextInt(sleepTime));
+    }
     public void menjar() throws InterruptedException {
         System.out.println(nom + " menja.");
-        Thread.sleep(1000);
-        Thread.sleep(rnd.nextInt(1000));
+        sleeping(1000);
         gana++;
     }
     public void pensar() throws InterruptedException {
         System.out.println(nom + " pensa.");
-        Thread.sleep(1000);
-        Thread.sleep(rnd.nextInt(1000));
+        sleeping(1000);
     }
 
     @Override
@@ -72,8 +74,7 @@ public class Filosofs extends Thread {
                             fEsquerra.deixa(this, "Esquerra");
                         }
                     }
-                    Thread.sleep(500);
-                    Thread.sleep(rnd.nextInt(500));
+                    sleeping(500);
                 }
             }
         } catch (InterruptedException e) {

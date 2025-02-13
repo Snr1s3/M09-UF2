@@ -12,13 +12,13 @@ public class Taula {
     }
 
     public static void showTaula(){
-        for (int i = 1; i <= 5; i++) {
+        for (int i = 1; i <= 6; i++) {
             forquillesList.add(new Forquilla(false, "For " + i));
         }
 
-        for (int i = 0; i < 5; i++) {
-            if (i == 4) {
-                filosofsList.add(new Filosofs(forquillesList.get(i), forquillesList.get(4-i), "Fil " + (i + 1)));
+        for (int i = 0; i < 6; i++) {
+            if (i == 5) {
+                filosofsList.add(new Filosofs(forquillesList.get(i), forquillesList.get(5-i), "Fil " + (i + 1)));
             } else {
                 filosofsList.add(new Filosofs(forquillesList.get(i), forquillesList.get(i + 1), "Fil " + (i + 1)));
             }

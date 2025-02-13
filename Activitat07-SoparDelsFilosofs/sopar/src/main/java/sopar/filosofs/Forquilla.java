@@ -27,15 +27,17 @@ public class Forquilla {
     public synchronized  boolean agafa(Filosofs f, String costat){
         boolean disponible = !enUs;
         if(enUs){
+            System.out.println(f.getNom()+ " Agafa "+nom+" Costat "+ costat + " Ocupada");
+            System.out.println(f.getNom()+ " Deixa "+nom+" Costat "+ costat);
             return disponible;
         }
         enUs = disponible;
-        System.out.println(f.getNom()+ " Agafa "+nom+" Costat"+ costat);
+        System.out.println(f.getNom()+ " Agafa "+nom+" Costat "+ costat);
         return disponible;
     }
     public synchronized  void deixa(Filosofs f, String costat){
         enUs = false;
-        System.out.println(f.getNom()+ " Deixa "+nom+" Costat"+ costat);
+        System.out.println(f.getNom()+ " Deixa "+nom+" Costat "+ costat);
         notifyAll();
     }
     @Override
