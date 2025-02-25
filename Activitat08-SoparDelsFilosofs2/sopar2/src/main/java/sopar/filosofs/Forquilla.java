@@ -8,6 +8,7 @@ public class Forquilla {
     public Forquilla(String nom) {
         this.nom = nom;
         Lliure = -1;
+        propietari = Lliure;
     }
 
     public int getPropietari() {
@@ -40,12 +41,12 @@ public class Forquilla {
     }
 
     public synchronized boolean agafa(Filosofs f, String costat) {
-        if (Lliure != -1) {
+        //System.out.println(costat + "  "+ nom+ "  "+Lliure);
+        if (propietari != -1) {
             System.out.println(f.getNom() + " agafa " + nom + " costat " + costat + " ocupada");
             return false;
         }
-        String[] numF= f.getNom().split(" ");
-        propietari = Integer.parseInt(numF[1]);
+        propietari = Integer.parseInt(f.getNom().split(" ")[1]);
         System.out.println(f.getNom() + " agafa " + nom + " costat " + costat);
         return true;
     }
