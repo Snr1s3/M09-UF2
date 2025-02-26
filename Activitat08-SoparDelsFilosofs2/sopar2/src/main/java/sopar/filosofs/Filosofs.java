@@ -80,14 +80,17 @@ public class Filosofs extends Thread {
     public synchronized void agafarForquilles() throws InterruptedException {
         while (true) {
             if (agafaForquillaEsquerra()) {
+                sleeping(1500); 
                 if (agafaForquillaDreta()) {
+                    sleeping(1500); 
                     return;
                 } else {
                     fEsquerra.deixa(this, "Esquerra");
                 }
+                
             }
             wait();
-            sleeping(500); 
+            sleeping(1500); 
         }
     }
 
