@@ -1,12 +1,21 @@
 package soparfilosofs.lock;
 
+import java.util.concurrent.locks.ReentrantLock;
+
 public class Forquilla {
     private int propietari;
     private int Lliure;
     private String nom;
+    private int num;
+    private final ReentrantLock bloqueig = new ReentrantLock();
 
     public Forquilla(String nom) {
         this.nom = nom;
+        Lliure = -1;
+    }
+
+    public Forquilla(int num) {
+        this.num = num;
         Lliure = -1;
     }
 
@@ -34,25 +43,35 @@ public class Forquilla {
         this.nom = nom;
     }
 
+    public int getNum() {
+        return num;
+    }
+
     @Override
     public String toString() {
         return nom;
     }
 
-    public synchronized boolean agafa(Filosofs f, String costat) {
-        if (Lliure != -1) {
-            System.out.println(f.getNom() + " agafa " + nom + " costat " + costat + " ocupada");
-            return false;
+    public boolean agafa(Filosofs f, String costat) {
+        bloqueig.lock();
+        try {
+            if (Lliure != -1) {
+                return false;
+            }
+            String[] numF = f.getNom().split(" ");
+            propietari = Integer.parseInt(numF[1]);
+            return true;
+        } finally {
+            bloqueig.unlock();
         }
-        String[] numF= f.getNom().split(" ");
-        propietari = Integer.parseInt(numF[1]);
-        System.out.println(f.getNom() + " agafa " + nom + " costat " + costat);
-        return true;
     }
 
-    public synchronized void deixa(Filosofs f, String costat) {
-        propietari = Lliure;
-        System.out.println(f.getNom() + " deixa " + nom + " costat " + costat);
-        notifyAll();
+    public void deixa(Filosofs f, String costat) {
+        bloqueig.lock();
+        try {
+            propietari = Lliure;
+        } finally {
+            bloqueig.unlock();
+        }
     }
 }
