@@ -2,10 +2,9 @@ package barber.mandros;
 
 import java.util.Random;
 
-public class Barber {
+public class Barber extends Thread{
     private String nom;
- private Barberia barberia;
-    private Random random = new Random();
+    private Barberia barberia; 
 
     public Barber(String nom, Barberia barberia) {
         this.nom = nom;
@@ -15,25 +14,16 @@ public class Barber {
     @Override
     public void run() {
         while (true) {
-            Client client = barberia.agafaClient();
-            if (client != null) {
-                try {
-                    System.out.println(nom + " està tallant el cabell del client " + client.getId() + ".");
-                    Thread.sleep(900 + random.nextInt(100));
-                    System.out.println(nom + " ha acabat de tallar el cabell del client " + client.getId() + ".");
-                } catch (InterruptedException e) {
-                    Thread.currentThread().interrupt();
+            try {
+                barberia.waitForClient();
+                Client client = barberia.seguentClient(); 
+                if (client != null) {
+                    client.tallarseElCabell();
+                    Thread.sleep(900 + new Random().nextInt(100));
                 }
-                barberia.acabaTall(); 
-            } else {
-                try {
-                    System.out.println(nom + " està dormint esperant clients.");
-                    synchronized (barberia) {
-                        barberia.wait();
-                    }
-                } catch (InterruptedException e) {
-                    Thread.currentThread().interrupt();
-                }
+            } catch (InterruptedException e) {
+                System.out.println(nom + " ha estat interromput.");
+                break;
             }
         }
     }
